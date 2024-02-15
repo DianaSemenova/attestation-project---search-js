@@ -32,9 +32,25 @@ a:visited {
     cursor: pointer;
 }
 
+input,
 button,
-._btn {
+textarea {
+    font-family: inherit;
+}
+
+input::-ms-clear {
+    display: none;
+}
+input[type='search']::-webkit-search-cancel-button {
+    display: none;
+  }
+button, 
+svg {
     cursor: pointer;
+}
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
 }
 
 ul li {
@@ -55,8 +71,7 @@ body {
     overflow: auto;
     background-color: #271a58;   
 }
-input,
-button,
+
 a,
 a:visited {
   text-decoration: none;
@@ -72,6 +87,9 @@ h5,
 h6 {
     font-size: inherit;
     font-weight: 400;
+}
+p {
+    max-width: 500px;
 }
 `;
 
