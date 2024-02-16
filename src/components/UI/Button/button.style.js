@@ -71,6 +71,24 @@ const buttons = {
             color: #db61ffab;
         }
     `,
+    user: css`
+        border: none;
+        color: #ffffff;
+        background-color: transparent;
+        padding: 5px 15px;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: #4d3c8d;
+            border: 1px solid #ffffff;
+        }
+        &:active {
+            background-color: #4d3c8d;
+            border: 1px solid #ffffff;
+        }
+    `,
 };
 
 const btnMixin = (params) => {

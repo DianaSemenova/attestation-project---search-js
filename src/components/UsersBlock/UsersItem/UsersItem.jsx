@@ -1,10 +1,11 @@
+import * as S from './userItem.style';
 import Button from '../../UI/Button/Button';
 
 export default function UsersItem({ item }) {
     return (
-        <li>
-            <div>Логин: {item.login}</div>
-            <Button>Подробнее о пользователе</Button>
-        </li>
+        <S.Li>
+            <div>Логин пользователя: {item.login}</div>
+            <Button classes="user">Подробнее о пользователе</Button>
+        </S.Li>
     );
 }
