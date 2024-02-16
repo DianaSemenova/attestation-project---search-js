@@ -4,7 +4,10 @@ const initialState = {
     isOpenSort: false,
     arrSortMethods: ['По возрастанию', 'По убыванию'],
     currentSortValue: 'По возрастанию',
-    paramsSearch: '',
+    paramsLogin: '',
+    paramsSort: 'asc',
+    perPage: 10,
+    page: 1,
 };
 
 export const usersSlice = createSlice({
@@ -18,13 +21,34 @@ export const usersSlice = createSlice({
         setCurrentSortValue: (state, action) => {
             state.currentSortValue = action.payload;
         },
-        setParamsSearch: (state, action) => {
-            state.paramsSearch = action.payload;
+        setParamsLogin: (state, action) => {
+            state.paramsLogin = action.payload;
+        },
+        setParamsSort: (state, action) => {
+            const { currentSortValue } = action.payload;
+
+            if (currentSortValue === 'По возрастанию') {
+                state.paramsSort = 'asc';
+            } else {
+                state.paramsSort = 'desc';
+            }
+        },
+        setPerPage: (state, action) => {
+            state.perPage = action.payload;
+        },
+        setPage: (state, action) => {
+            state.page = action.payload;
         },
     },
 });
 
-export const { setIsOpenSort, setCurrentSortValue, setParamsSearch } =
-    usersSlice.actions;
+export const {
+    setIsOpenSort,
+    setCurrentSortValue,
+    setParamsLogin,
+    setParamsSort,
+    setPerPage,
+    setPage,
+} = usersSlice.actions;
 
 export default usersSlice.reducer;

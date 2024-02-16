@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './filter.style';
 import Button from '../../UI/Button/Button';
@@ -5,6 +6,7 @@ import FilterItem from '../FilterItem/FilterItem';
 import {
     setIsOpenSort,
     setCurrentSortValue,
+    setParamsSort,
 } from '../../../store/slices/users';
 
 export default function Filter() {
@@ -12,6 +14,10 @@ export default function Filter() {
     const { isOpenSort, arrSortMethods, currentSortValue } = useSelector(
         (state) => state.users,
     );
+
+    useEffect(() => {
+        dispatch(setParamsSort({ currentSortValue }));
+    }, [currentSortValue, dispatch]);
 
     return (
         <S.FilterDiv>

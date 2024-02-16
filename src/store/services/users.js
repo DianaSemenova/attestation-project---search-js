@@ -9,7 +9,8 @@ export const usersQuery = createApi({
 
     endpoints: (build) => ({
         getUsers: build.query({
-            query: (params) => `search/users?${params}`,
+            query: ({ paramsLogin, paramsSort, perPage, page }) =>
+                `search/users?q=${paramsLogin}&sort=repositories&order=${paramsSort}&per_page=${perPage}&page=${page}`,
         }),
     }),
 });
