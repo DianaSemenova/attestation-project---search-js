@@ -1,3 +1,5 @@
+import { FadeLoader } from 'react-spinners';
+
 const getTextResult = (isError, isLoading, data, paramsLogin, textError) => {
     if (isError) {
         return 'Не удалось загрузить пользователей...';
@@ -17,7 +19,7 @@ const getTextResult = (isError, isLoading, data, paramsLogin, textError) => {
     }
 
     if (!isError && isLoading) {
-        return `Загрузка...`;
+        return <FadeLoader color="#36d7b7" height={15} width={5} />;
     }
 };
 

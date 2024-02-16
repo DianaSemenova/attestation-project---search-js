@@ -46,7 +46,7 @@ export default function MainPage() {
                             paramsLogin,
                             textError,
                         )}
-                        <SearchNoResultSvg />
+                       {!isLoading && <SearchNoResultSvg />}
                     </S.TextResult>
                 </S.NoResultBlock>
             )}
