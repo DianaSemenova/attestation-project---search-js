@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     isOpenSort: false,
+    isOpenDataAmount: false,
     arrSortMethods: ['По возрастанию', 'По убыванию'],
     currentSortValue: 'По возрастанию',
     paramsLogin: '',
@@ -17,6 +18,9 @@ export const usersSlice = createSlice({
     reducers: {
         setIsOpenSort: (state, action) => {
             state.isOpenSort = action.payload;
+        },
+        setIsOpenDataAmount: (state, action) => {
+            state.isOpenDataAmount = action.payload;
         },
         setCurrentSortValue: (state, action) => {
             state.currentSortValue = action.payload;
@@ -44,6 +48,7 @@ export const usersSlice = createSlice({
 
 export const {
     setIsOpenSort,
+    setIsOpenDataAmount,
     setCurrentSortValue,
     setParamsLogin,
     setParamsSort,

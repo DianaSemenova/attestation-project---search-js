@@ -115,7 +115,7 @@ const buttons = {
     dataAmount: css`
         border-radius: 6px;
         padding: 5px;
-        background: #8f77c5;
+        background: ${(props) => (props.$active ? '#05002c' : '#8f77c5')};
         color: #ffffff;
         border: 2px solid #ffffff;
         transition: background 0.6s;
