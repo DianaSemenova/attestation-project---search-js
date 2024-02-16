@@ -1,5 +1,5 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import * as S from './main.style';
 import Filter from '../../components/FilterBlock/Filter/Filter';
@@ -11,18 +11,8 @@ export default function MainPage() {
     const { paramsLogin, paramsSort, perPage, page } = useSelector(
         (state) => state.users,
     );
-
     const [getUsers, { isLoading, isError, data }] = useLazyGetUsersQuery();
-
-    useEffect(() => {
-        console.log('isLoading', isLoading);
-    }, [isLoading]);
-
-    useEffect(() => {
-        console.log('isError', isError);
-    }, [isError]);
-
-    console.log('data', data);
+    const [textError, setTextError] = useState('');
 
     const fetchDataUsers = async () => {
         try {
@@ -33,7 +23,7 @@ export default function MainPage() {
                 page,
             });
         } catch (error) {
-            console.error(error);
+            setTextError(error.message);
         }
     };
 
@@ -49,7 +39,13 @@ export default function MainPage() {
             {(!data || data?.items?.length === 0 || !paramsLogin) && (
                 <S.NoResultBlock>
                     <S.TextResult>
-                        {getTextResult(isError, isLoading, data, paramsLogin)}
+                        {getTextResult(
+                            isError,
+                            isLoading,
+                            data,
+                            paramsLogin,
+                            textError,
+                        )}
                         <SearchNoResultSvg />
                     </S.TextResult>
                 </S.NoResultBlock>

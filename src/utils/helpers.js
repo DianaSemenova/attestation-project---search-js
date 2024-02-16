@@ -1,6 +1,9 @@
-const getTextResult = (isError, isLoading, data, paramsLogin) => {
+const getTextResult = (isError, isLoading, data, paramsLogin, textError) => {
     if (isError) {
         return 'Не удалось загрузить пользователей...';
+    }
+    if (textError) {
+        return textError;
     }
 
     if (!isError && !isLoading) {
