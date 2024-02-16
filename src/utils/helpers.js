@@ -1,4 +1,6 @@
 import { FadeLoader } from 'react-spinners';
+import { baseApi } from '../store/services/baseApi';
+
 
 const getTextResult = (isError, isLoading, data, paramsLogin, textError) => {
     if (isError) {
@@ -23,4 +25,8 @@ const getTextResult = (isError, isLoading, data, paramsLogin, textError) => {
     }
 };
 
-export { getTextResult };
+const handleClearCacheUsers = (dispatch) => {
+    dispatch(baseApi.util.resetApiState());
+};
+
+export { getTextResult, handleClearCacheUsers };

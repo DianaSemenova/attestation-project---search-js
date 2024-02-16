@@ -1,13 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as S from './main.style';
 import Filter from '../../components/FilterBlock/Filter/Filter';
 import SearchNoResultSvg from '../../components/UI/Icons/Search/SearchNoResultSvg';
 import { useLazyGetUsersQuery } from '../../store/services/users';
-import { getTextResult } from '../../utils/helpers';
+import { getTextResult, handleClearCacheUsers } from '../../utils/helpers';
+import UsersList from '../../components/UsersBlock/Users/Users';
 
 export default function MainPage() {
+    const dispatch = useDispatch();
     const { paramsLogin, paramsSort, perPage, page } = useSelector(
         (state) => state.users,
     );
@@ -33,6 +35,12 @@ export default function MainPage() {
         }
     }, [paramsLogin, paramsSort, perPage, page]);
 
+    useEffect(() => {
+        if (data && !paramsLogin) {
+            handleClearCacheUsers(dispatch);
+        }
+    }, [paramsLogin]);
+
     return (
         <S.App>
             {data?.items.length > 0 && paramsLogin && <Filter />}
@@ -46,10 +54,12 @@ export default function MainPage() {
                             paramsLogin,
                             textError,
                         )}
-                       {!isLoading && <SearchNoResultSvg />}
+                        {!isLoading && <SearchNoResultSvg />}
                     </S.TextResult>
                 </S.NoResultBlock>
             )}
+
+            {paramsLogin && data?.items.length > 0 && <UsersList data={data} />}
         </S.App>
     );
 }
