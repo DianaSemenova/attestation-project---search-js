@@ -5,6 +5,7 @@ import * as S from './main.style';
 import Filter from '../../components/FilterBlock/Filter/Filter';
 import SearchNoResultSvg from '../../components/UI/Icons/Search/SearchNoResultSvg';
 import { useLazyGetUsersQuery } from '../../store/services/users';
+import { getTextResult } from '../../utils/helpers';
 
 export default function MainPage() {
     const { paramsLogin, paramsSort, perPage, page } = useSelector(
@@ -21,9 +22,7 @@ export default function MainPage() {
         console.log('isError', isError);
     }, [isError]);
 
-    useEffect(() => {
-        console.log('data', data);
-    }, [data]);
+    console.log('data', data);
 
     const fetchDataUsers = async () => {
         try {
@@ -44,33 +43,13 @@ export default function MainPage() {
         }
     }, [paramsLogin, paramsSort, perPage, page]);
 
-    const getTextResult = () => {
-        if (isError) {
-            return 'Не удалось загрузить пользователей...';
-        }
-
-        if (!isError && !isLoading) {
-            if (!data) {
-                return 'Пожалуйста, введите в поле ввода данные пользователя, чтобы получить список пользователей.';
-            }
-
-            if (paramsLogin && data?.length === 0) {
-                return `Пользователи по запросу «${paramsLogin}» не найдены.`;
-            }
-        }
-
-        if (!isError && isLoading) {
-            return `Загрузка...`;
-        }
-    };
-
     return (
         <S.App>
-            {data?.length > 0 && <Filter />}
-            {(!data || data?.length === 0) && (
+            {data?.items.length > 0 && paramsLogin && <Filter />}
+            {(!data || data?.items?.length === 0 || !paramsLogin) && (
                 <S.NoResultBlock>
                     <S.TextResult>
-                        {getTextResult()}
+                        {getTextResult(isError, isLoading, data, paramsLogin)}
                         <SearchNoResultSvg />
                     </S.TextResult>
                 </S.NoResultBlock>
