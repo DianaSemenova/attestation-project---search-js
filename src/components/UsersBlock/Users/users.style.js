@@ -13,7 +13,7 @@ export const Ul = styled.ul`
     padding: 20px 50px;
     border-radius: 12px;
 
-    @media (max-width: 703px) {
-        padding: 0px;
+    @media (max-width: 800px) {
+        padding: 20px 0px;
     }
 `;
