@@ -19,10 +19,6 @@ export const FilterTitle = styled.div`
     font-size: 16px;
     line-height: 24px;
     color: #fff;
-
-    @media (max-width: 540px) {
-        display: none;
-    }
 `;
 export const SortDiv = styled.div`
     display: -webkit-box;
@@ -37,6 +33,11 @@ export const SortDiv = styled.div`
     -ms-flex-align: center;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 540px) {
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
 `;
 
 export const Div = styled.div`

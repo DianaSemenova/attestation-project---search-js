@@ -88,9 +88,6 @@ h6 {
     font-size: inherit;
     font-weight: 400;
 }
-p {
-    max-width: 500px;
-}
 `;
 
 export default GlobalStyle;

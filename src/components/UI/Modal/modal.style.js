@@ -14,6 +14,7 @@ export const Modal = styled.div`
     align-items: center;
     justify-content: center;
     transition: 0.5s;
+    z-index: 999;
 `;
 export const Content = styled.div`
     padding: 36px 54px;
