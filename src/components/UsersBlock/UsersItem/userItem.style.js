@@ -8,8 +8,8 @@ export const Li = styled.li`
     gap: 100px;
     padding: 10px 25px;
     max-width: 800px;
-    color: #ffffff;
     border-radius: 12px;
+    color: #ffffff;
     background-color: transparent;
     border: 1px solid #ffffff;
 

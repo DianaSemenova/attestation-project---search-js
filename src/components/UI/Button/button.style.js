@@ -89,6 +89,44 @@ const buttons = {
             border: 1px solid #ffffff;
         }
     `,
+
+    pagination: css`
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        border: none;
+        background: none;
+        color: black;
+        transition: all 0.3s;
+
+        &:hover {
+            background: #8f77c5;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+        &:active {
+            background: #8f77c5;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+    `,
+    dataAmount: css`
+        border-radius: 6px;
+        padding: 5px;
+        background: #8f77c5;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        transition: background 0.6s;
+
+        &:hover {
+            background: #05002c;
+        }
+        &:active {
+            background: #05002c;
+        }
+    `,
 };
 
 const btnMixin = (params) => {
