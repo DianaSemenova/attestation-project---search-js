@@ -1,14 +1,16 @@
 import { Outlet } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import * as S from './layout.style';
-import Header from '../../components/common/Header/Header';
-import Filter from '../../components/common/FilterBlock/Filter/Filter';
+import Header from '../../components/Header/Header';
+import { setIsOpenSort } from '../../store/slices/users';
 
 export default function Layout() {
+    const dispatch = useDispatch();
+
     return (
-        <S.Wrapper>
+        <S.Wrapper onClick={() => dispatch(setIsOpenSort(false))}>
             <S.Container>
                 <Header />
-                <Filter />
                 <Outlet />
             </S.Container>
         </S.Wrapper>

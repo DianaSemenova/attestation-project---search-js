@@ -20,7 +20,7 @@ export const Ul = styled.ul`
 `;
 
 export const Li = styled.li`
-    color: white;
+    color: ${(props) => (props.$active ? '#db61ffab' : 'white')};
     cursor: pointer;
     transition: all 0.2s;
 

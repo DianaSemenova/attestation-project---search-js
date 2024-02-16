@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import * as S from './header.style';
-import Button from '../../UI/Button/Button';
-import SearchSvg from '../../UI/Icons/Search/SearchSvg';
-import Modal from '../../UI/Modal/Modal';
-import Input from '../../UI/Input/Input';
+import Button from '../UI/Button/Button';
+import SearchSvg from '../UI/Icons/Search/SearchSvg';
+import Modal from '../UI/Modal/Modal';
+import Input from '../UI/Input/Input';
 
 export default function Header() {
     const [modalActive, setModalActive] = useState(false);
