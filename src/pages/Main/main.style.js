@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const App = styled.div`
     max-width: 1178px;
     margin: 0 auto;
+    padding-top: 30px;
 `;
 
 export const NoResultBlock = styled.div`
