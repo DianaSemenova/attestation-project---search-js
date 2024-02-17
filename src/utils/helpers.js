@@ -1,6 +1,12 @@
 import { FadeLoader } from 'react-spinners';
 import { baseApi } from '../store/services/baseApi';
-
+import {
+    setPage,
+    setParamsSort,
+    setCurrentSortValue,
+    setPerPage,
+    setTotalAmountUserData,
+} from '../store/slices/users';
 
 const getTextResult = (isError, isLoading, data, paramsLogin, textError) => {
     if (isError) {
@@ -18,6 +24,17 @@ const getTextResult = (isError, isLoading, data, paramsLogin, textError) => {
         if (paramsLogin && data?.items.length === 0) {
             return `Пользователи по запросу «${paramsLogin}» не найдены.`;
         }
+        if (paramsLogin) {
+            if (data?.total_count === 1) {
+                return `Найден ${data.total_count} пользователь.`;
+            }
+            if (data?.total_count > 1 && data?.total_count <= 1000) {
+                return `Найденo ${data.total_count} пользователей.`;
+            }
+            if (data?.total_count > 1000) {
+                return `Найденo ${data.total_count} пользователей. Отображаются первые 1000 записей.`;
+            }
+        }
     }
 
     if (!isError && isLoading) {
@@ -27,6 +44,11 @@ const getTextResult = (isError, isLoading, data, paramsLogin, textError) => {
 
 const handleClearCacheUsers = (dispatch) => {
     dispatch(baseApi.util.resetApiState());
+    dispatch(setPage(1));
+    dispatch(setParamsSort('По возрастанию'));
+    dispatch(setCurrentSortValue('По возрастанию'));
+    dispatch(setPerPage(10));
+    dispatch(setTotalAmountUserData(0));
 };
 
 export { getTextResult, handleClearCacheUsers };

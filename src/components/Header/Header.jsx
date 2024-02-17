@@ -4,7 +4,12 @@ import * as S from './header.style';
 import Button from '../UI/Button/Button';
 import SearchSvg from '../UI/Icons/Search/SearchSvg';
 import Input from '../UI/Input/Input';
-import { setParamsLogin } from '../../store/slices/users';
+import {
+    setParamsLogin,
+    setPage,
+    setParamsSort,
+    setCurrentSortValue,
+} from '../../store/slices/users';
 
 export default function Header() {
     const dispatch = useDispatch();
@@ -28,7 +33,12 @@ export default function Header() {
                 />
                 <Button
                     classes="search"
-                    onClick={() => dispatch(setParamsLogin(searchText))}
+                    onClick={() => {
+                        dispatch(setParamsLogin(searchText));
+                        dispatch(setPage(1));
+                        dispatch(setParamsSort('По возрастанию'));
+                        dispatch(setCurrentSortValue('По возрастанию'));
+                    }}
                 >
                     <SearchSvg />
                 </Button>

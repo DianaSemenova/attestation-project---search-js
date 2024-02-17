@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Pagination = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-top: 20px;
     padding: 0px 10px;

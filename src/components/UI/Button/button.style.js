@@ -96,9 +96,9 @@ const buttons = {
         height: 30px;
         text-align: center;
         line-height: 30px;
-        border: none;
-        background: none;
-        color: black;
+        border: ${(props) => (props.$active ? ' 1px solid #ffffff' : 'none')};
+        background: ${(props) => (props.$active ? '#8f77c5' : 'none')};
+        color: ${(props) => (props.$active ? '#ffffff' : 'black')};
         transition: all 0.3s;
 
         &:hover {

@@ -2,13 +2,17 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     isOpenSort: false,
-    isOpenDataAmount: false,
     arrSortMethods: ['По возрастанию', 'По убыванию'],
     currentSortValue: 'По возрастанию',
     paramsLogin: '',
     paramsSort: 'asc',
-    perPage: 10,
-    page: 1,
+    pagination: {
+        isOpenDataAmount: false,
+        totalAmountUserData: 0,
+        numberPages: [1],
+        perPage: 10,
+        page: 1,
+    },
 };
 
 export const usersSlice = createSlice({
@@ -20,7 +24,7 @@ export const usersSlice = createSlice({
             state.isOpenSort = action.payload;
         },
         setIsOpenDataAmount: (state, action) => {
-            state.isOpenDataAmount = action.payload;
+            state.pagination.isOpenDataAmount = action.payload;
         },
         setCurrentSortValue: (state, action) => {
             state.currentSortValue = action.payload;
@@ -29,19 +33,37 @@ export const usersSlice = createSlice({
             state.paramsLogin = action.payload;
         },
         setParamsSort: (state, action) => {
-            const { currentSortValue } = action.payload;
-
-            if (currentSortValue === 'По возрастанию') {
+            if (action.payload === 'По возрастанию') {
                 state.paramsSort = 'asc';
             } else {
                 state.paramsSort = 'desc';
             }
         },
+        setTotalAmountUserData: (state, action) => {
+            state.pagination.totalAmountUserData = action.payload;
+        },
         setPerPage: (state, action) => {
-            state.perPage = action.payload;
+            state.pagination.perPage = action.payload;
         },
         setPage: (state, action) => {
-            state.page = action.payload;
+            state.pagination.page = action.payload;
+        },
+
+        setNumberPages: (state, action) => {
+            if (state.pagination.perPage && action.payload) {
+                const totalPages =
+                    action.payload > 1000
+                        ? Math.ceil(1000 / state.pagination.perPage)
+                        : Math.ceil(action.payload / state.pagination.perPage);
+
+                state.pagination.numberPages = [];
+
+                for (let i = 1; i <= totalPages; i += 1) {
+                    state.pagination.numberPages.push(i);
+                }
+            } else {
+                state.pagination.numberPages = [1];
+            }
         },
     },
 });
@@ -52,8 +74,10 @@ export const {
     setCurrentSortValue,
     setParamsLogin,
     setParamsSort,
+    setTotalAmountUserData,
     setPerPage,
     setPage,
+    setNumberPages,
 } = usersSlice.actions;
 
 export default usersSlice.reducer;

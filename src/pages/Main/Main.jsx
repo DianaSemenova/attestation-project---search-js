@@ -6,34 +6,34 @@ import Filter from '../../components/FilterBlock/Filter/Filter';
 import SearchNoResultSvg from '../../components/UI/Icons/Search/SearchNoResultSvg';
 import { useLazyGetUsersQuery } from '../../store/services/users';
 import { getTextResult, handleClearCacheUsers } from '../../utils/helpers';
+import { fetchDataUsers } from '../../utils/fetchDataUser';
 import UsersList from '../../components/UsersBlock/Users/Users';
 
 export default function MainPage() {
     const dispatch = useDispatch();
-    const { paramsLogin, paramsSort, perPage, page } = useSelector(
+    const { paramsLogin, paramsSort, pagination } = useSelector(
         (state) => state.users,
     );
     const [getUsers, { isLoading, isError, data }] = useLazyGetUsersQuery();
     const [textError, setTextError] = useState('');
 
-    const fetchDataUsers = async () => {
-        try {
-            await getUsers({
+    useEffect(() => {
+        if (
+            paramsLogin &&
+            paramsSort &&
+            pagination.perPage &&
+            pagination.page
+        ) {
+            fetchDataUsers(
                 paramsLogin,
                 paramsSort,
-                perPage,
-                page,
-            });
-        } catch (error) {
-            setTextError(error.message);
+                pagination,
+                getUsers,
+                setTextError,
+                dispatch,
+            );
         }
-    };
-
-    useEffect(() => {
-        if (paramsLogin && paramsSort && perPage && page) {
-            fetchDataUsers();
-        }
-    }, [paramsLogin, paramsSort, perPage, page]);
+    }, [paramsLogin, paramsSort, pagination.perPage, pagination.page]);
 
     useEffect(() => {
         if (data && !paramsLogin) {
@@ -43,10 +43,11 @@ export default function MainPage() {
 
     return (
         <S.App>
-            {data?.items.length > 0 && paramsLogin && <Filter />}
-            {(!data || data?.items?.length === 0 || !paramsLogin) && (
+            {(!data ||
+                data?.items?.length === 0 ||
+                data?.items?.length > 0) && (
                 <S.NoResultBlock>
-                    <S.TextResult>
+                    <S.TextResult $active={data?.items?.length > 0}>
                         {getTextResult(
                             isError,
                             isLoading,
@@ -54,10 +55,14 @@ export default function MainPage() {
                             paramsLogin,
                             textError,
                         )}
-                        {!isLoading && <SearchNoResultSvg />}
+                        {!isLoading && !data?.items?.length > 0 && (
+                            <SearchNoResultSvg />
+                        )}
                     </S.TextResult>
                 </S.NoResultBlock>
             )}
+
+            {data?.items.length > 0 && paramsLogin && <Filter />}
 
             {paramsLogin && data?.items.length > 0 && <UsersList data={data} />}
         </S.App>

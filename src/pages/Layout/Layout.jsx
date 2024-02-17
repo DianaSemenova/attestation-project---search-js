@@ -6,9 +6,7 @@ import { setIsOpenSort, setIsOpenDataAmount } from '../../store/slices/users';
 
 export default function Layout() {
     const dispatch = useDispatch();
-    const { isOpenSort, isOpenDataAmount } = useSelector(
-        (state) => state.users,
-    );
+    const { isOpenSort, pagination } = useSelector((state) => state.users);
 
     return (
         <S.Wrapper
@@ -16,7 +14,7 @@ export default function Layout() {
                 if (isOpenSort) {
                     dispatch(setIsOpenSort(false));
                 }
-                if (isOpenDataAmount) {
+                if (pagination.isOpenDataAmount) {
                     dispatch(setIsOpenDataAmount(false));
                 }
             }}
