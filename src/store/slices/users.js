@@ -12,6 +12,7 @@ const initialState = {
         numberPages: [1],
         perPage: 10,
         page: 1,
+        arrAmountData: [],
     },
 };
 
@@ -65,6 +66,18 @@ export const usersSlice = createSlice({
                 state.pagination.numberPages = [1];
             }
         },
+
+        setArrAmountData: (state, action) => {
+            if (action.payload < 25) {
+                state.pagination.arrAmountData = [10, 5];
+            } else if (action.payload < 50) {
+                state.pagination.arrAmountData = [25, 10, 5];
+            } else if (action.payload < 100) {
+                state.pagination.arrAmountData = [50, 25, 10, 5];
+            } else {
+                state.pagination.arrAmountData = [100, 50, 25, 10, 5];
+            }
+        },
     },
 });
 
@@ -78,6 +91,7 @@ export const {
     setPerPage,
     setPage,
     setNumberPages,
+    setArrAmountData,
 } = usersSlice.actions;
 
 export default usersSlice.reducer;

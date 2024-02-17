@@ -1,17 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './pagination.style';
 import Button from '../UI/Button/Button';
-import { setIsOpenDataAmount, setPage } from '../../store/slices/users';
+import {
+    setIsOpenDataAmount,
+    setPage,
+    setPerPage,
+} from '../../store/slices/users';
 
 export default function Pagination() {
     const dispatch = useDispatch();
-    const { isOpenDataAmount, numberPages, page } = useSelector(
-        (state) => state.users.pagination,
-    );
-    const arrAmountData = [100, 50, 25, 10, 5];
+    const {
+        isOpenDataAmount,
+        numberPages,
+        page,
+        totalAmountUserData,
+        perPage,
+        arrAmountData,
+    } = useSelector((state) => state.users.pagination);
 
     return (
-        <S.Pagination>
+        <S.Pagination $active={totalAmountUserData <= 10}>
             <S.NumberPageDiv>
                 {numberPages.map((number) => (
                     <Button
@@ -31,14 +39,22 @@ export default function Pagination() {
                     dispatch(setIsOpenDataAmount(!isOpenDataAmount));
                 }}
             >
-                <Button classes="dataAmount" isActive={isOpenDataAmount}>
-                    Показывать по: 10
-                </Button>
+                {totalAmountUserData > 10 && (
+                    <Button classes="dataAmount" isActive={isOpenDataAmount}>
+                        Показывать по: {perPage}
+                    </Button>
+                )}
 
                 {isOpenDataAmount && (
                     <S.DataAmountUl>
                         {arrAmountData.map((item) => (
-                            <S.Li key={item}>по: {item}</S.Li>
+                            <S.Li
+                                key={item}
+                                $active={item === perPage}
+                                onClick={() => dispatch(setPerPage(item))}
+                            >
+                                по: {item}
+                            </S.Li>
                         ))}
                     </S.DataAmountUl>
                 )}

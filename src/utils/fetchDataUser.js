@@ -1,4 +1,8 @@
-import { setTotalAmountUserData, setNumberPages } from '../store/slices/users';
+import {
+    setTotalAmountUserData,
+    setNumberPages,
+    setArrAmountData,
+} from '../store/slices/users';
 
 const fetchDataUsers = async (
     paramsLogin,
@@ -18,6 +22,7 @@ const fetchDataUsers = async (
 
         dispatch(setTotalAmountUserData(response.data?.total_count));
         dispatch(setNumberPages(response.data?.total_count));
+        dispatch(setArrAmountData(response.data?.total_count));
     } catch (error) {
         setTextError(error.message);
     }

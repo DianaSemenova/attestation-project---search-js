@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Pagination = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: ${(props) => (props.$active ? 'center' : 'flex-start')};
     align-items: center;
     margin-top: 20px;
     padding: 0px 10px;
@@ -52,7 +52,7 @@ export const DataAmountUl = styled.ul`
 `;
 
 export const Li = styled.li`
-    color: white;
+    color: ${(props) => (props.$active ? '#db61ffab' : 'white')};
     cursor: pointer;
     transition: all 0.2s;
 
