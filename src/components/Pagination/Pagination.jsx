@@ -97,7 +97,8 @@ export default function Pagination() {
             >
                 {totalAmountUserData > 10 && (
                     <Button classes="dataAmount" isActive={isOpenDataAmount}>
-                        Показывать по: {perPage}
+                        <S.DataAmountSpan>Показывать</S.DataAmountSpan> по:{' '}
+                        {perPage}
                     </Button>
                 )}
 
@@ -109,7 +110,7 @@ export default function Pagination() {
                                 $active={item === perPage}
                                 onClick={() => dispatch(setPerPage(item))}
                             >
-                                по: {item}
+                                <span>по:</span> {item}
                             </S.Li>
                         ))}
                     </S.DataAmountUl>

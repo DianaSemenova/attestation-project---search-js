@@ -50,6 +50,10 @@ export const DataAmountUl = styled.ul`
     background: #05002c;
     color: #ffffff;
     border-color: white;
+
+    @media (max-width: 420px) {
+        padding: 10px 10px;
+    }
 `;
 
 export const Li = styled.li`
@@ -65,6 +69,12 @@ export const Li = styled.li`
         color: #db61ffab;
         text-decoration-line: underline;
     }
+
+    @media (max-width: 420px) {
+        & span {
+            display: none;
+        }
+    }
 `;
 export const Point = styled.div`
     display: flex;
@@ -77,5 +87,11 @@ export const Point = styled.div`
 
     &:hover {
         transform: scale(1.1);
+    }
+`;
+
+export const DataAmountSpan = styled.span`
+    @media (max-width: 420px) {
+        display: none;
     }
 `;
