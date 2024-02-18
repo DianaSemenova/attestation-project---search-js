@@ -9,6 +9,7 @@ import {
     setPage,
     setParamsSort,
     setCurrentSortValue,
+    setPerPage,
 } from '../../store/slices/users';
 
 export default function Header() {
@@ -36,6 +37,7 @@ export default function Header() {
                     onClick={() => {
                         dispatch(setParamsLogin(searchText));
                         dispatch(setPage(1));
+                        dispatch(setPerPage(10));
                         dispatch(setParamsSort('По возрастанию'));
                         dispatch(setCurrentSortValue('По возрастанию'));
                     }}

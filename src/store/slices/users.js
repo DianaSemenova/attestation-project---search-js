@@ -77,8 +77,7 @@ export const usersSlice = createSlice({
             } else if (action.payload < 100) {
                 state.pagination.arrAmountData = [50, 25, 10, 5];
             } else {
-                state.pagination.arrAmountData = [100, 50, 25];
-                state.pagination.perPage = 25;
+                state.pagination.arrAmountData = [100, 50, 25, 10];
             }
         },
         setStartIndex: (state, action) => {
