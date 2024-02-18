@@ -70,11 +70,9 @@ export const usersSlice = createSlice({
         },
 
         setArrAmountData: (state, action) => {
-            if (action.payload < 25) {
-                state.pagination.arrAmountData = [10, 5];
-            } else if (action.payload < 50) {
+            if (action.payload <= 25) {
                 state.pagination.arrAmountData = [25, 10, 5];
-            } else if (action.payload < 100) {
+            } else if (action.payload <= 50) {
                 state.pagination.arrAmountData = [50, 25, 10, 5];
             } else {
                 state.pagination.arrAmountData = [100, 50, 25, 10];

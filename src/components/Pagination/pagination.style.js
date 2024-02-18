@@ -17,6 +17,10 @@ export const Pagination = styled.div`
         width: 100%;
         gap: 0px;
     }
+
+    @media (max-width: 500px) {
+        justify-content: flex-start;
+    }
 `;
 
 export const NumberPageDiv = styled.div`

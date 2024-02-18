@@ -19,7 +19,7 @@ export const Modal = styled.div`
 export const Content = styled.div`
     padding: 36px 54px;
     border-radius: 12px;
-    background-color: #ffffff;
+    background-color: #d9d9d9;
     transform: ${(props) => (props.$active ? 'scale(1)' : ' scale(0.5)')};
     transition: 0.4s;
 `;

@@ -6,7 +6,10 @@ export const usersQuery = baseApi.injectEndpoints({
             query: ({ paramsLogin, paramsSort, perPage, page }) =>
                 `search/users?q=${paramsLogin}&sort=repositories&order=${paramsSort}${perPage && page ? `&per_page=${perPage}&page=${page}` : ''}`,
         }),
+        getUserInfo: build.query({
+            query: (login) => `/users/${login}`,
+        }),
     }),
 });
 
-export const { useGetUsersQuery, useLazyGetUsersQuery } = usersQuery;
+export const { useLazyGetUserInfoQuery, useLazyGetUsersQuery } = usersQuery;

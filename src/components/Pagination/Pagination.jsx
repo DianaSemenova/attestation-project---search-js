@@ -47,7 +47,7 @@ export default function Pagination() {
     };
 
     return (
-        <S.Pagination $active={totalAmountUserData <= 10}>
+        <S.Pagination $active={arrAmountData.length <= 5}>
             <S.NumberPageDiv>
                 {page !== 1 && numberPages.length > 5 && (
                     <>

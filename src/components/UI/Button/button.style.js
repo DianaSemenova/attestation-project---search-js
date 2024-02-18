@@ -25,8 +25,8 @@ const buttons = {
     `,
     close: css`
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 10px;
+        right: 20px;
         background-color: transparent;
         border: none;
         outline: none;
@@ -140,4 +140,3 @@ const btnMixin = (params) => {
 export const Btn = styled.button`
     ${(props) => btnMixin(props.$style)};
 `;
-

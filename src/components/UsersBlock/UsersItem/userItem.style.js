@@ -18,3 +18,10 @@ export const Li = styled.li`
         gap: 0px;
     }
 `;
+
+export const Login = styled.p`
+    & span {
+        font-size: 16px;
+        text-decoration-line: underline;
+    }
+`;
