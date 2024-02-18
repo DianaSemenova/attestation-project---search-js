@@ -76,6 +76,6 @@ export const Point = styled.div`
     transition: transform 0.2s ease-in-out;
 
     &:hover {
-        transform: scale(1.07);
+        transform: scale(1.1);
     }
 `;

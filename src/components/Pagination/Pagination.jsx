@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import * as S from './pagination.style';
 import Button from '../UI/Button/Button';
-import ArrowForwardSvg from '../UI/Icons/Arrow/ArrowSvg';
+import { ArrowForwardSvg, ArrowBackSvg } from '../UI/Icons/Arrow/ArrowSvg';
 import {
     setIsOpenDataAmount,
     setPage,
@@ -40,9 +40,20 @@ export default function Pagination() {
             dispatch(setPage(page + 1));
         }
     };
+
+    const handlePrevPage = () => {
+        if (page > 1) {
+            dispatch(setPage(page - 1));
+        }
+    };
     const handleGoToFirstPage = () => {
         if (page !== 1) {
             dispatch(setPage(1));
+        }
+    };
+    const handleGoLastPage = () => {
+        if (page !== numberPages[numberPages.length - 1]) {
+            dispatch(setPage(numberPages[numberPages.length - 1]));
         }
     };
 
@@ -51,13 +62,10 @@ export default function Pagination() {
             <S.NumberPageDiv>
                 {page !== 1 && numberPages.length > 5 && (
                     <>
-                        <Button
-                            classes="dataAmount"
-                            onClick={handleGoToFirstPage}
-                        >
-                            В начало
+                        <Button classes="pagination" onClick={handlePrevPage}>
+                            <ArrowBackSvg />
                         </Button>
-                        <S.Point> ... </S.Point>
+                        <S.Point onClick={handleGoToFirstPage}> ... </S.Point>
                     </>
                 )}
 
@@ -72,22 +80,10 @@ export default function Pagination() {
                     </Button>
                 ))}
                 {numberPages.length > 5 && page + 4 < numberPages.length && (
-                    <S.Point
-                        onClick={() =>
-                            dispatch(
-                                setPage(numberPages[numberPages.length - 1]),
-                            )
-                        }
-                    >
-                        {' '}
-                        ...{' '}
-                    </S.Point>
+                    <S.Point onClick={handleGoLastPage}> ... </S.Point>
                 )}
                 {numberPages.length > 5 && page + 4 < numberPages.length && (
-                    <Button
-                        classes="pagination"
-                        onClick={() => handleNextPage()}
-                    >
+                    <Button classes="pagination" onClick={handleNextPage}>
                         <ArrowForwardSvg />
                     </Button>
                 )}
