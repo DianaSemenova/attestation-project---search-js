@@ -71,6 +71,66 @@ const buttons = {
             color: #db61ffab;
         }
     `,
+    user: css`
+        border: none;
+        color: #ffffff;
+        background-color: transparent;
+        padding: 5px 15px;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: #4d3c8d;
+            border: 1px solid #ffffff;
+        }
+        &:active {
+            background-color: #4d3c8d;
+            border: 1px solid #ffffff;
+        }
+    `,
+
+    pagination: css`
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        border: ${(props) => (props.$active ? ' 1px solid #ffffff' : 'none')};
+        background: ${(props) => (props.$active ? '#8f77c5' : 'none')};
+        color: ${(props) => (props.$active ? '#ffffff' : 'black')};
+        transition: all 0.3s;
+
+        &:hover svg path {
+            fill: #fff;
+        }
+
+        &:hover {
+            background: #8f77c5;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+        &:active {
+            background: #8f77c5;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+    `,
+    dataAmount: css`
+        border-radius: 6px;
+        padding: 5px;
+        background: ${(props) => (props.$active ? '#05002c' : '#8f77c5')};
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        transition: background 0.6s;
+
+        &:hover {
+            background: #05002c;
+        }
+        &:active {
+            background: #05002c;
+        }
+    `,
 };
 
 const btnMixin = (params) => {
@@ -80,4 +140,4 @@ const btnMixin = (params) => {
 export const Btn = styled.button`
     ${(props) => btnMixin(props.$style)};
 `;
-// background: none;
+

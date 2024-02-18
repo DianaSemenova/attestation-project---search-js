@@ -12,7 +12,6 @@ export const FilterDiv = styled.div`
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 25px 0px;
     justify-content: center;
 `;
 export const FilterTitle = styled.div`

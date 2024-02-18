@@ -16,7 +16,7 @@ export default function Filter() {
     );
 
     useEffect(() => {
-        dispatch(setParamsSort({ currentSortValue }));
+        dispatch(setParamsSort(currentSortValue));
     }, [currentSortValue, dispatch]);
 
     return (

@@ -1,20 +1,24 @@
 import styled from 'styled-components';
 
-export const Header = styled.div`
+export const Header = styled.header`
+    position: sticky;
+    top: 0px;
+    left: 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
+    z-index: 999;
+    background-color: #271a58;
 `;
 
 export const Title = styled.h1`
     color: #fff;
-    font-size: 40px;
+    font-size: 30px;
+    padding-top: 10px;
 
-    @media (max-width: 703px) {
-        font-size: 30px;
-    }
     @media (max-width: 540px) {
         font-size: 20px;
     }
