@@ -50,7 +50,6 @@ export const DataAmountUl = styled.ul`
     background: #05002c;
     color: #ffffff;
     border-color: white;
-    transition: all 0.3s;
 `;
 
 export const Li = styled.li`
@@ -73,4 +72,10 @@ export const Point = styled.div`
     color: black;
     padding: 0px 10px 0px 0px;
     font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.07);
+    }
 `;

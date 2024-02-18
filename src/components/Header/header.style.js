@@ -27,7 +27,8 @@ export const Title = styled.h1`
 export const SearchDiv = styled.div`
     display: flex;
     flex-direction: row;
-    width: 500px;
+    align-items: center;
+    width: 600px;
     border-radius: 60px;
     background-color: white;
     border: 1px solid #f1f1f1;

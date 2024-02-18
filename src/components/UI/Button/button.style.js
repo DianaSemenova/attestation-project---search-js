@@ -138,5 +138,8 @@ const btnMixin = (params) => {
     return styles;
 };
 export const Btn = styled.button`
+    background-color: transparent;
+    border: none;
+    outline: none;
     ${(props) => btnMixin(props.$style)};
 `;

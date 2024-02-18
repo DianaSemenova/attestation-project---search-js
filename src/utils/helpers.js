@@ -3,6 +3,7 @@ import { baseApi } from '../store/services/baseApi';
 import {
     setPage,
     setParamsSort,
+    setParamsLogin,
     setCurrentSortValue,
     setPerPage,
     setTotalAmountUserData,
@@ -60,6 +61,7 @@ const handleClearCacheUsers = (dispatch) => {
     dispatch(setCurrentSortValue('По возрастанию'));
     dispatch(setPerPage(10));
     dispatch(setTotalAmountUserData(0));
+    dispatch(setParamsLogin(''));
 };
 
 export { getTextResult, handleClearCacheUsers, getTextResultUserInfo };

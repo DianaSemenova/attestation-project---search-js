@@ -47,7 +47,7 @@ export default function Pagination() {
     };
 
     return (
-        <S.Pagination $active={arrAmountData.length <= 5}>
+        <S.Pagination $active={numberPages.length <= 5}>
             <S.NumberPageDiv>
                 {page !== 1 && numberPages.length > 5 && (
                     <>
@@ -72,7 +72,16 @@ export default function Pagination() {
                     </Button>
                 ))}
                 {numberPages.length > 5 && page + 4 < numberPages.length && (
-                    <S.Point> ... </S.Point>
+                    <S.Point
+                        onClick={() =>
+                            dispatch(
+                                setPage(numberPages[numberPages.length - 1]),
+                            )
+                        }
+                    >
+                        {' '}
+                        ...{' '}
+                    </S.Point>
                 )}
                 {numberPages.length > 5 && page + 4 < numberPages.length && (
                     <Button
