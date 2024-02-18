@@ -13,6 +13,8 @@ const initialState = {
         perPage: 10,
         page: 1,
         arrAmountData: [],
+        startIndex: 0,
+        endIndex: 5,
     },
 };
 
@@ -75,8 +77,27 @@ export const usersSlice = createSlice({
             } else if (action.payload < 100) {
                 state.pagination.arrAmountData = [50, 25, 10, 5];
             } else {
-                state.pagination.arrAmountData = [100, 50, 25, 10, 5];
+                state.pagination.arrAmountData = [100, 50, 25];
+                state.pagination.perPage = 25;
             }
+        },
+        setStartIndex: (state, action) => {
+            const { numberPages, page } = action.payload;
+
+            state.pagination.startIndex =
+                numberPages.length <= 5
+                    ? 0
+                    : Math.max(
+                          page + 4 > numberPages.length
+                              ? numberPages.length - 5
+                              : page - 1,
+                          0,
+                      );
+        },
+        setEndIndex: (state, action) => {
+            const { numberPages, page } = action.payload;
+
+            state.pagination.endIndex = Math.min(page + 4, numberPages.length);
         },
     },
 });
@@ -92,6 +113,8 @@ export const {
     setPage,
     setNumberPages,
     setArrAmountData,
+    setStartIndex,
+    setEndIndex,
 } = usersSlice.actions;
 
 export default usersSlice.reducer;

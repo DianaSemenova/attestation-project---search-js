@@ -36,10 +36,10 @@ export default function MainPage() {
     }, [paramsLogin, paramsSort, pagination.perPage, pagination.page]);
 
     useEffect(() => {
-        if (data && !paramsLogin) {
+        if (!paramsLogin && (isError || data)) {
             handleClearCacheUsers(dispatch);
         }
-    }, [paramsLogin]);
+    }, [paramsLogin, isError]);
 
     return (
         <S.App>
@@ -62,9 +62,11 @@ export default function MainPage() {
                 </S.NoResultBlock>
             )}
 
-            {data?.items.length > 1 && paramsLogin && <Filter />}
+            {data?.items.length > 1 && paramsLogin && !isError && <Filter />}
 
-            {paramsLogin && data?.items.length > 0 && <UsersList data={data} />}
+            {paramsLogin && data?.items.length > 0 && !isError && (
+                <UsersList data={data} isError={isError} />
+            )}
         </S.App>
     );
 }
