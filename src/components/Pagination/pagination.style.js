@@ -17,6 +17,10 @@ export const Pagination = styled.div`
         width: 100%;
         gap: 0px;
     }
+
+    @media (max-width: 500px) {
+        justify-content: flex-start;
+    }
 `;
 
 export const NumberPageDiv = styled.div`
@@ -46,7 +50,10 @@ export const DataAmountUl = styled.ul`
     background: #05002c;
     color: #ffffff;
     border-color: white;
-    transition: all 0.3s;
+
+    @media (max-width: 420px) {
+        padding: 10px 10px;
+    }
 `;
 
 export const Li = styled.li`
@@ -62,6 +69,12 @@ export const Li = styled.li`
         color: #db61ffab;
         text-decoration-line: underline;
     }
+
+    @media (max-width: 420px) {
+        & span {
+            display: none;
+        }
+    }
 `;
 export const Point = styled.div`
     display: flex;
@@ -69,4 +82,16 @@ export const Point = styled.div`
     color: black;
     padding: 0px 10px 0px 0px;
     font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+`;
+
+export const DataAmountSpan = styled.span`
+    @media (max-width: 420px) {
+        display: none;
+    }
 `;

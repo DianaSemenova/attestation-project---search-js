@@ -3,6 +3,7 @@ import { baseApi } from '../store/services/baseApi';
 import {
     setPage,
     setParamsSort,
+    setParamsLogin,
     setCurrentSortValue,
     setPerPage,
     setTotalAmountUserData,
@@ -42,6 +43,17 @@ const getTextResult = (isError, isLoading, data, paramsLogin, textError) => {
     }
 };
 
+const getTextResultUserInfo = (data, isLoading, textError) => {
+    if (!data && !isLoading) {
+        return 'Не удалось загрузить информацию о пользователе...';
+    }
+    if (textError) {
+        return textError;
+    }
+
+    return <FadeLoader color="#36d7b7" height={15} width={5} />;
+};
+
 const handleClearCacheUsers = (dispatch) => {
     dispatch(baseApi.util.resetApiState());
     dispatch(setPage(1));
@@ -49,6 +61,7 @@ const handleClearCacheUsers = (dispatch) => {
     dispatch(setCurrentSortValue('По возрастанию'));
     dispatch(setPerPage(10));
     dispatch(setTotalAmountUserData(0));
+    dispatch(setParamsLogin(''));
 };
 
-export { getTextResult, handleClearCacheUsers };
+export { getTextResult, handleClearCacheUsers, getTextResultUserInfo };

@@ -28,4 +28,12 @@ const fetchDataUsers = async (
     }
 };
 
-export { fetchDataUsers };
+const fetchDataUserInfo = async (getUserInfo, setTextError, item) => {
+    try {
+        await getUserInfo(item.login);
+    } catch (error) {
+        setTextError(error.message);
+    }
+};
+
+export { fetchDataUsers, fetchDataUserInfo };

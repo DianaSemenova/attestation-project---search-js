@@ -68,7 +68,6 @@ body {
     -webkit-text-size-adjust: 100%;
     font-family: "StratosSkyeng", sans-serif;
     color: #000000;
-    overflow: auto;
     background-color: #271a58;   
 }
 
