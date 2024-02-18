@@ -32,7 +32,6 @@ export const DataAmount = styled.div`
 
 export const DataAmountUl = styled.ul`
     position: absolute;
-    background: black;
     bottom: 30px;
     right: 0;
     padding: 10px 20px;
@@ -43,7 +42,6 @@ export const DataAmountUl = styled.ul`
     cursor: pointer;
     width: 100%;
     border-radius: 12px;
-
     border: 1px solid #ffffff;
     background: #05002c;
     color: #ffffff;
@@ -64,4 +62,11 @@ export const Li = styled.li`
         color: #db61ffab;
         text-decoration-line: underline;
     }
+`;
+export const Point = styled.div`
+    display: flex;
+    align-items: center;
+    color: black;
+    padding: 0px 10px 0px 0px;
+    font-size: 16px;
 `;

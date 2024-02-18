@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as S from './main.style';
 import Filter from '../../components/FilterBlock/Filter/Filter';
 import SearchNoResultSvg from '../../components/UI/Icons/Search/SearchNoResultSvg';
+import UsersList from '../../components/UsersBlock/Users/Users';
 import { useLazyGetUsersQuery } from '../../store/services/users';
 import { getTextResult, handleClearCacheUsers } from '../../utils/helpers';
 import { fetchDataUsers } from '../../utils/fetchDataUser';
-import UsersList from '../../components/UsersBlock/Users/Users';
 
 export default function MainPage() {
     const dispatch = useDispatch();
@@ -62,7 +62,7 @@ export default function MainPage() {
                 </S.NoResultBlock>
             )}
 
-            {data?.items.length > 0 && paramsLogin && <Filter />}
+            {data?.items.length > 1 && paramsLogin && <Filter />}
 
             {paramsLogin && data?.items.length > 0 && <UsersList data={data} />}
         </S.App>

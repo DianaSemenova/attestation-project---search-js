@@ -101,6 +101,10 @@ const buttons = {
         color: ${(props) => (props.$active ? '#ffffff' : 'black')};
         transition: all 0.3s;
 
+        &:hover svg path {
+            fill: #fff;
+        }
+
         &:hover {
             background: #8f77c5;
             color: #ffffff;
@@ -136,4 +140,4 @@ const btnMixin = (params) => {
 export const Btn = styled.button`
     ${(props) => btnMixin(props.$style)};
 `;
-// background: none;
+

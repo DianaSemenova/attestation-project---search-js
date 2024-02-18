@@ -18,10 +18,10 @@ export const TextResult = styled.p`
     text-align: center;
 
     @media (max-width: 540px) {
-        font-size: ${(props) => (props.$active ? '12px' : '18px')};
+        font-size: ${(props) => (props.$active ? '20px' : '18px')};
     }
-    @media (max-width: 370px) {
+    @media (max-width: 385px) {
         font-size: ${(props) => (props.$active ? '12px' : '14px')};
-        line-height: ${(props) => (props.$active ? '30px' : ' 45px')};
+        line-height: ${(props) => (props.$active ? '20px' : ' 45px')};
     }
 `;
