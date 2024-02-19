@@ -25,3 +25,9 @@ export const Login = styled.p`
         text-decoration-line: underline;
     }
 `;
+
+export const UserSpan = styled.span`
+    @media (max-width: 550px) {
+        display: none;
+    }
+`;

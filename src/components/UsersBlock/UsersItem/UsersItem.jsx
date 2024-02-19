@@ -13,7 +13,7 @@ export default function UsersItem({ item }) {
                 Логин: <span>{item.login}</span>
             </S.Login>
             <Button classes="user" onClick={() => setModalActive(true)}>
-                Подробнее о пользователе
+                Подробнее <S.UserSpan>о пользователе</S.UserSpan>
             </Button>
             <Modal isActive={modalActive} setActive={setModalActive}>
                 <UserInfo item={item} modalActive={modalActive} />
