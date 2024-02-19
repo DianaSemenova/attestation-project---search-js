@@ -108,7 +108,10 @@ export default function Pagination() {
                             <S.Li
                                 key={item}
                                 $active={item === perPage}
-                                onClick={() => dispatch(setPerPage(item))}
+                                onClick={() => {
+                                    dispatch(setPerPage(item));
+                                    dispatch(setPage(1));
+                                }}
                             >
                                 <span>по:</span> {item}
                             </S.Li>
