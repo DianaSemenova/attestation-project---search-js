@@ -25,7 +25,7 @@ export default function UserInfo({ item, modalActive }) {
                 </S.LoadingDiv>
             ) : (
                 <S.InfoDiv>
-                    <a href={data?.avatar_url}>
+                    <a href={data?.avatar_url} target="_blank" rel="noreferrer">
                         <S.ImgBlock>
                             <img
                                 src={
@@ -69,7 +69,11 @@ export default function UserInfo({ item, modalActive }) {
                         <S.Info>
                             repositories : <span>{data?.public_repos}</span>
                         </S.Info>
-                        <S.Link href={data?.html_url}>
+                        <S.Link
+                            href={data?.html_url}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             Перейти на профиль пользователя на GitHub
                         </S.Link>
                     </S.InfoDivItem>

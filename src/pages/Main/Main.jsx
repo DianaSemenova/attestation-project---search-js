@@ -47,7 +47,7 @@ export default function MainPage() {
                 data?.items?.length === 0 ||
                 data?.items?.length > 0) && (
                 <S.NoResultBlock>
-                    <S.TextResult $active={data?.items?.length > 0}>
+                    <S.TextResult $active={data?.items?.length > 0 && !isError}>
                         {getTextResult(
                             isError,
                             isLoading,
@@ -55,9 +55,10 @@ export default function MainPage() {
                             paramsLogin,
                             textError,
                         )}
-                        {!isLoading && !data?.items?.length > 0 && (
-                            <SearchNoResultSvg />
-                        )}
+                        {!isLoading &&
+                            (!data?.items?.length > 0 || isError) && (
+                                <SearchNoResultSvg />
+                            )}
                     </S.TextResult>
                 </S.NoResultBlock>
             )}

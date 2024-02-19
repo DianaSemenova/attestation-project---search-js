@@ -11,7 +11,7 @@ import {
 
 const getTextResult = (isError, isLoading, data, paramsLogin, textError) => {
     if (isError) {
-        return 'Не удалось загрузить пользователей... Пожалуйста, повторите попытку.';
+        return 'Не удалось загрузить пользователей... Пожалуйста, попробуйте повторите попытку через некоторое время.';
     }
     if (textError) {
         return textError;
