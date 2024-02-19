@@ -1,4 +1,4 @@
-# [Search for users on GitHub](https://whimsical-pudding-739428.netlify.app)
+# [Search for users on GitHub](https://search-for-users-githab.netlify.app/)
 
 ## Описание проекта
 
@@ -40,7 +40,8 @@ https://api.github.com/users?q={имя пользователя}
 Дополнительную информацию по данной теме можно найти в [документации](https://developer.github.com/v3/search/#search-users).
 
 ## Деплой проекта
-https://whimsical-pudding-739428.netlify.app
+
+https://search-for-users-githab.netlify.app/
 
 ## Помощь и поддержка
 
