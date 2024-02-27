@@ -53,7 +53,7 @@ export const Login = styled.p`
 `;
 
 export const UserSpan = styled.span`
-    @media (max-width: 550px) {
+    @media (max-width: 800px) {
         display: none;
     }
 `;

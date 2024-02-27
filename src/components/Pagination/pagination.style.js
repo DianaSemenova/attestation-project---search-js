@@ -23,7 +23,7 @@ export const Pagination = styled.div`
 export const NumberPageDiv = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 5px;
 `;
 
 export const DataAmount = styled.div`

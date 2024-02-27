@@ -52,8 +52,10 @@ export default function Pagination() {
         }
     };
     const handleGoLastPage = () => {
-        if (page !== numberPages[numberPages.length - 1]) {
-            dispatch(setPage(numberPages[numberPages.length - 1]));
+        const lastPage = numberPages[numberPages.length - 1];
+
+        if (page !== lastPage) {
+            dispatch(setPage(lastPage));
         }
     };
 
