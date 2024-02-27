@@ -3,23 +3,20 @@ import styled from 'styled-components';
 export const Pagination = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: ${(props) => (props.$active ? 'center' : 'flex-start')};
+    justify-content: center;
     align-items: center;
     margin-top: 20px;
     padding: 0px 10px;
-    max-width: 800px;
+    width: 100%;
     color: #ffffff;
     border-radius: 6px;
     background-color: #dbdbdb;
     border: 1px solid #ffffff;
     position: relative;
     @media (max-width: 703px) {
-        width: 100%;
         gap: 0px;
-    }
-
-    @media (max-width: 500px) {
-        justify-content: flex-start;
+        justify-content: ${(props) =>
+            props.$active ? 'center' : 'flex-start'};
     }
 `;
 

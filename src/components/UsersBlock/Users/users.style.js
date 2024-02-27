@@ -12,6 +12,7 @@ export const BlockUsers = styled.div`
 export const Ul = styled.ul`
     padding: 20px 50px;
     border-radius: 12px;
+    width: 100%;
 
     @media (max-width: 800px) {
         padding: 20px 0px;

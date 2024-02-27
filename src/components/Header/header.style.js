@@ -28,12 +28,8 @@ export const SearchDiv = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 600px;
+    width: 100%;
     border-radius: 60px;
     background-color: white;
     border: 1px solid #f1f1f1;
-
-    @media (max-width: 703px) {
-        width: 100%;
-    }
 `;
