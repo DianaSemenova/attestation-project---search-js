@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import * as S from './userInfo.style';
 import { useLazyGetUserInfoQuery } from '../../../store/services/users';
 import { getTextResultUserInfo } from '../../../utils/helpers';
@@ -8,10 +9,18 @@ import { fetchDataUserInfo } from '../../../utils/fetchDataUser';
 export default function UserInfo({ item, modalActive }) {
     const [getUserInfo, { data, isLoading }] = useLazyGetUserInfoQuery();
     const [textError, setTextError] = useState('');
+    const dispatch = useDispatch();
+    const { viewedUserInfo } = useSelector((state) => state.users);
 
     useEffect(() => {
         if (item.login && modalActive) {
-            fetchDataUserInfo(getUserInfo, setTextError, item);
+            fetchDataUserInfo(
+                getUserInfo,
+                setTextError,
+                item,
+                viewedUserInfo,
+                dispatch,
+            );
         }
     }, [modalActive, item]);
 

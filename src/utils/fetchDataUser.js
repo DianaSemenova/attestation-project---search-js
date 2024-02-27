@@ -2,6 +2,7 @@ import {
     setTotalAmountUserData,
     setNumberPages,
     setArrAmountData,
+    setViewedUserInfo,
 } from '../store/slices/users';
 
 const fetchDataUsers = async (
@@ -28,9 +29,19 @@ const fetchDataUsers = async (
     }
 };
 
-const fetchDataUserInfo = async (getUserInfo, setTextError, item) => {
+const fetchDataUserInfo = async (
+    getUserInfo,
+    setTextError,
+    item,
+    viewedUserInfo,
+    dispatch,
+) => {
     try {
-        await getUserInfo(item.login);
+        const response = await getUserInfo(item.login);
+
+        if (!viewedUserInfo?.includes(response?.data?.login)) {
+            dispatch(setViewedUserInfo(response.data?.login));
+        }
     } catch (error) {
         setTextError(error.message);
     }
