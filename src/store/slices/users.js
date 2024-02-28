@@ -6,7 +6,6 @@ const initialState = {
     currentSortValue: 'По возрастанию',
     paramsLogin: '',
     paramsSort: 'asc',
-    viewedUserInfo: [],
     pagination: {
         isOpenDataAmount: false,
         totalAmountUserData: 0,
@@ -97,9 +96,6 @@ export const usersSlice = createSlice({
 
             state.pagination.endIndex = Math.min(page + 4, numberPages.length);
         },
-        setViewedUserInfo: (state, action) => {
-            state.viewedUserInfo = [...state.viewedUserInfo, action.payload];
-        },
     },
 });
 
@@ -116,7 +112,6 @@ export const {
     setArrAmountData,
     setStartIndex,
     setEndIndex,
-    setViewedUserInfo,
 } = usersSlice.actions;
 
 export default usersSlice.reducer;
