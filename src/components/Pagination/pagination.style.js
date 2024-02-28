@@ -67,7 +67,7 @@ export const Li = styled.li`
         text-decoration-line: underline;
     }
 
-    @media (max-width: 420px) {
+    @media (max-width: 500px) {
         & span {
             display: none;
         }
@@ -88,7 +88,7 @@ export const Point = styled.div`
 `;
 
 export const DataAmountSpan = styled.span`
-    @media (max-width: 420px) {
+    @media (max-width: 500px) {
         display: none;
     }
 `;
